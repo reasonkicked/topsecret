@@ -58,8 +58,8 @@ def get_secret():
 
     # Your code goes here.
     if secret:
-        secret = json.loads(secret)
+        secrets = json.loads(secret)
     elif decoded_binary_secret:
-        secret = json.loads(decoded_binary_secret)
+        secrets = json.loads(decoded_binary_secret)
 
     return secrets
