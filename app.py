@@ -44,7 +44,7 @@ class Transaction(db.Model):
 @app.route('/')
 def hello_world():
     print(db_config)
-    return 'Hello world!!!!!'
+    return 'Hello world update!!!!!'
 
 
 @app.route('/list_db')
