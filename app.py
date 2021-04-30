@@ -7,6 +7,8 @@ from secrets_manager import get_secret
 app = Flask(__name__)
 db_config = get_secret()
 
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f'postgresql+psycopg2://{db_config["username"]}:' +
     f'{db_config["password"]}@' +
@@ -41,6 +43,7 @@ class Transaction(db.Model):
 
 @app.route('/')
 def hello_world():
+    print(db_config)
     return 'Hello world!!!!!'
 
 
