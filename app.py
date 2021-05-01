@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 # from secrets_manager import get_secret
 
-
+#
 app = Flask(__name__)
 
 
