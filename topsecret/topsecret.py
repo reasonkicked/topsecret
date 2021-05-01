@@ -7,25 +7,25 @@ from secrets_manager import get_secret
 
 app = Flask(__name__)
 
+#
+# db_username = os.environ["POSTGRES_USER"]
+# db_password = os.environ["POSTGRES_PW"]
+# db_url = os.environ["POSTGRES_URL"]
+# db_db = os.environ["POSTGRES_DB"]
+#
+#
+#
+# app.config['SQLALCHEMY_DATABASE_URI'] = (
+#     f'postgresql+psycopg2://{db_username}:' +
+#     f'{db_password}@' +
+#     f'{db_url}/' +
+#     f'{db_db}'
+# )
+#
+#
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db_username = os.environ["POSTGRES_USER"]
-db_password = os.environ["POSTGRES_PW"]
-db_url = os.environ["POSTGRES_URL"]
-db_db = os.environ["POSTGRES_DB"]
 
-
-
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f'postgresql+psycopg2://{db_username}:' +
-    f'{db_password}@' +
-    f'{db_url}/' +
-    f'{db_db}'
-)
-
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-"""
 db_config = get_secret()
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f'postgresql+psycopg2://{db_config["username"]}:' +
@@ -35,7 +35,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 )
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-"""
+
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
