@@ -2,7 +2,7 @@ FROM python:3.8-slim
 
 RUN apt-get update
 RUN apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common gcc
-
+RUN pip install Flask-WTF
 
 # add user (change to whatever you want)
 # prevents running sudo commands
@@ -43,12 +43,15 @@ ENV POSTGRES_DB $POSTGRES_DB
 
 # Avoid cache purge by adding requirements first
 ADD ./requirements.txt ./requirements.txt
+ADD ./setup.py ./setup.py
+RUN python ./setup.py install --user
 
-RUN pip install --no-cache-dir -r ./requirements.txt --user
+
 
 # Add the rest of the files
 COPY . /app
 WORKDIR /app
+
 
 # start web server
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app", "--workers=5"]
