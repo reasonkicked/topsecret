@@ -11,7 +11,7 @@ export FLASK_SECRET_KEY=#
 docker-compose up --build
 
 #RDS
-pip install flask gunicorn flask-sqlalchemy flask-migrate psycopg2-binary
+pip install flask gunicorn flask-sqlalchemy flask-migrate psycopg2-binary boto3
 pip install gunicorn
 pip install flask-sqlalchemy
 pip install flask-migrate
