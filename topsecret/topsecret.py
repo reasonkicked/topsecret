@@ -59,10 +59,6 @@ class Transaction(db.Model):
     def __repr__(self):
         return f'{self.first_name} {self.last_name} spent {self.amount}'
 
-def create_app(app_name="TOPSECRET"):
-    initialize_app(app)
-    app.run(debug=settings.FLASK_DEBUG, use_reloader=settings.FLASK_USE_RELOADER)
-
 
 @app.route('/')
 def hello_world():

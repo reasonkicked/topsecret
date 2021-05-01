@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::890769921003:role/ecsTaskExecutionRole",
+  "executionRoleArn": null,
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -55,8 +55,8 @@
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-2:890769921003:task-definition/ts-ecs-task-01:1",
-  "family": "ts-ecs-task-01",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-2:890769921003:task-definition/ts-ecs-task-definition-01:1",
+  "family": "ts-ecs-task-definition-01",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -75,12 +75,6 @@
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.task-iam-role"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.execution-role-ecr-pull"
     }
   ],
   "pidMode": null,
