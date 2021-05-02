@@ -11,7 +11,7 @@
         {
           "hostPort": 0,
           "protocol": "tcp",
-          "containerPort": 5000
+          "containerPort": 5001
         }
       ],
       "command": null,
@@ -29,7 +29,7 @@
       "memoryReservation": 128,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "890769921003.dkr.ecr.us-west-2.amazonaws.com/ts-ecr-01:2a28c2e53332ab83d0aaae620de9d312949a677a",
+      "image": "890769921003.dkr.ecr.us-west-2.amazonaws.com/ts-ecr-02",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -46,7 +46,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "ts-ecr-01"
+      "name": "ts-ecr-02"
     }
   ],
   "placementConstraints": [],
@@ -55,8 +55,8 @@
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-2:890769921003:task-definition/ts-ecs-task-definition-2:8",
-  "family": "ts-ecs-task-definition-2",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-2:890769921003:task-definition/ts-ecs-task-definition-3-test:2",
+  "family": "ts-ecs-task-definition-3-test",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -89,7 +89,7 @@
   ],
   "networkMode": null,
   "cpu": null,
-  "revision": 8,
+  "revision": 2,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,

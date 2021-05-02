@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% set active_page = 'modify_meal' %}
+{% block title %}{{ meal.title }} - {% endblock %}
+
+{% block content %}
+<hr>
+<form method="POST" action="{{ url_for('delete_meal', meal_id=meal.id) }}">
+    {{ delete_meal_form.hidden_tag() }}
+    {{ delete_meal_form.submit(class="btn btn-danger", onclick="return confirm('Are you sure you want to delete this item?');") }}
+</form>
+<br>
+<form method="GET" action="{{ url_for('handle_meal', meal_id=meal.id) }}">
+    {{ modify_meal_form.submit(class="btn btn btn-outline-primary") }}
+</form>
+
+<div class="row">
+    <div class="col-lg-3 my-4">
+
+    </div>
+    <div class="col-lg-9">
+        <div class="card mt-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <img class="card-img-top embed-responsive-item" src="{{ url_for('static', filename='images/placeholder.png') }}">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">{{ meal.title }}</h3>
+                <h4>{{ "$%.2f" | format(meal.price) }}</h4>
+                <p class="card-text">{{ meal.description }}</p>
+                <h4>
+                    <div class="badge badge-secondary">Category</div> <br>
+                    <div class="badge badge-secondary">Subcategory</div> <br>
+                </h4>
+            </div>
+        </div>
+
+        <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+                Meal Reviews
+            </div>
+            <div class="card-body">
+                <p>Some comment</p>
+                <small class="text-muted">Posted by anonymous</small>
+                <hr>
+                <p>Some comment</p>
+                <small class="text-muted">Posted by anonymous</small>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
