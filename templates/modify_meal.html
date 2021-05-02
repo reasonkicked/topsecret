@@ -7,6 +7,7 @@
     <div class="col-lg-7 offset-lg-2 my-5">
         <h1>Modify meal</h1><hr>
         <form method="POST" action="{{ url_for('handle_meal', meal_id=meal_id) }}">
+            {{ form.csrf_token() }}
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.title.label }}
