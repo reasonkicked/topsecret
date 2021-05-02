@@ -38,6 +38,7 @@ ENV FLASK_SECRET_KEY $FLASK_SECRET_KEY
 
 
 
+
 # Avoid cache purge by adding requirements first
 ADD ./requirements.txt ./requirements.txt
 ADD ./setup.py ./setup.py
