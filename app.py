@@ -19,39 +19,39 @@ SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 #
 
-db_username = "postgres"
-db_password = "CluLnxPaSS"
-db_url = "tsrdsdb01.cveqos66v3sg.us-west-2.rds.amazonaws.com"
-db_db = "tsrdsdb01"
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f'postgresql+psycopg2://{db_username}:' +
-    f'{db_password}@' +
-    f'{db_url}/' +
-    f'{db_db}'
-)
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-
-# db_config = get_secret()
+# db_username = "postgres"
+# db_password = "CluLnxPaSS"
+# db_url = "tsrdsdb01.cveqos66v3sg.us-west-2.rds.amazonaws.com"
+# db_db = "tsrdsdb01"
+#
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#
 # app.config['SQLALCHEMY_DATABASE_URI'] = (
-#     f'postgresql+psycopg2://{db_config["username"]}:' +
-#     f'{db_config["password"]}@' +
-#     f'{db_config["host"]}/' +
-#     f'{db_config["db_name"]}'
+#     f'postgresql+psycopg2://{db_username}:' +
+#     f'{db_password}@' +
+#     f'{db_url}/' +
+#     f'{db_db}'
 # )
 #
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #
-#
 # db = SQLAlchemy(app)
 # migrate = Migrate(app, db)
+
+
+db_config = get_secret()
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f'postgresql+psycopg2://{db_config["username"]}:' +
+    f'{db_config["password"]}@' +
+    f'{db_config["host"]}/' +
+    f'{db_config["db_name"]}'
+)
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 
