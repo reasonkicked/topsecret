@@ -13,10 +13,13 @@ import logging as logger
 from flask_restful import Api
 from secrets_manager import get_secret
 import os
+from flask_wtf.csrf import CSRFProtect
+
 
 app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
+csrf = CSRFProtect(app)
 #
 
 # db_username = "postgres"
