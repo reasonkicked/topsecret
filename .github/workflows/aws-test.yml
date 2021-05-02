@@ -26,6 +26,8 @@
 on:
   release:
     types: [created]
+  # run manually
+  workflow_dispatch:
 
 name: Deploy to Amazon ECS
 
@@ -33,7 +35,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
     - name: Checkout
@@ -44,7 +45,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
+        aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
     - name: Login to Amazon ECR
       id: login-ecr
