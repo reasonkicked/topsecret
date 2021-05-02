@@ -8,7 +8,7 @@
         <h1>Add new item</h1><hr>
 
         <form method="POST" action="{{ url_for('handle_meals') }}">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            {{ form.csrf_token() }}
             <div class="form-group">
                 {{ form.title.label }}
                 {{ form.title(class="form-control") }}
