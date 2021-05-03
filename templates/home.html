@@ -5,6 +5,7 @@
   <div class="row">
     <div class="col-lg-3">
       <div class="my-4">
+
         <form action="{{ url_for('home') }}" method="GET">
             <div class="form-group">
                 {{ form.title.label }}
@@ -24,6 +25,7 @@
             </div>
             {{ form.submit(class="btn btn-primary form-control") }}
         </form>
+
       </div>
     </div>
     <div class="col-lg-9">

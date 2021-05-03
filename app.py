@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, SelectField, DecimalField
-from wtforms.validators import InputRequired, DataRequired, Length
 from sqlalchemy.sql import select
 from sqlalchemy import create_engine
 from flask_sqlalchemy import SQLAlchemy
@@ -13,33 +10,14 @@ import logging as logger
 from flask_restful import Api
 from secrets_manager import get_secret
 import os
-from flask_wtf.csrf import CSRFProtect
-
+from flask_wtf import CSRFProtect
+from topsecret import *
 
 app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 csrf = CSRFProtect(app)
-#
-
-# db_username = "postgres"
-# db_password = "CluLnxPaSS"
-# db_url = "tsrdsdb01.cveqos66v3sg.us-west-2.rds.amazonaws.com"
-# db_db = "tsrdsdb01"
-#
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#
-# app.config['SQLALCHEMY_DATABASE_URI'] = (
-#     f'postgresql+psycopg2://{db_username}:' +
-#     f'{db_password}@' +
-#     f'{db_url}/' +
-#     f'{db_db}'
-# )
-#
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#
-# db = SQLAlchemy(app)
-# migrate = Migrate(app, db)
+csrf.init_app(app)
 
 
 db_config = get_secret()
@@ -57,7 +35,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-
 class Transaction(db.Model):
     __tablename__ = 'transactions'
 
@@ -73,18 +50,6 @@ class Transaction(db.Model):
 
     def __repr__(self):
         return f'{self.first_name} {self.last_name} spent {self.amount}'
-
-
-# @app.route('/')
-# def hello_world():
-#
-#     return 'Hello world update!!!!!'
-
-
-@app.route('/list_db')
-def list_db():
-    transactions = Transaction.query.all()
-    return '\n'.join([str(transaction) for transaction in transactions])
 
 
 class MealsModel(db.Model):
@@ -134,36 +99,10 @@ class Subategory(db.Model):
         return self.name
 
 
-class NewItemForm(FlaskForm):
-    title = StringField("Title", validators=[InputRequired("Input is required!"),
-                                             DataRequired("Data is required!"),
-                                             Length(min=2, max=20,
-                                                    message="Input must be between 5 and 20 characters long!")])
-    price = DecimalField("Price")
-    description = TextAreaField("Description", validators=[InputRequired("Input is required!"),
-                                                           DataRequired("Data is required!"),
-                                                           Length(min=2, max=50,
-                                                                  message=
-                                                                  "Input must be between 2 and 50 characters long!")])
-    category = SelectField("Category")
-    subcategory = SelectField("Subcategory")
-    submit = SubmitField("Submit")
-
-
-class DeleteMealForm(FlaskForm):
-    submit = SubmitField("Delete meal")
-
-
-class ModifyMealForm(FlaskForm):
-    submit = SubmitField("Modify meal")
-
-
-class FilterForm(FlaskForm):
-    title = StringField("Title", validators=[Length(max=20)])
-    price = SelectField("Price", coerce=int, choices=[(0, "---"), (1, "Max to Min"), (2, "Min to Max")])
-    category = SelectField("Category")
-    subcategory = SelectField("Subcategory")
-    submit = SubmitField("Filter")
+@app.route('/list_db')
+def list_db():
+    transactions = Transaction.query.all()
+    return '\n'.join([str(transaction) for transaction in transactions])
 
 
 @app.route('/new_meal', methods=['POST', 'GET'])
@@ -268,11 +207,8 @@ def home():
 
     for meal in sorted_meals[:10]:
         items_from_db.append(meal)
-        # print(meal)
 
     return render_template("home.html", meals=items_from_db, form=form)
-
-
 
 
 if __name__ == '__main__':
