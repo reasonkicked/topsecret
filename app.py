@@ -52,6 +52,20 @@ class Transaction(db.Model):
         return f'{self.first_name} {self.last_name} spent {self.amount}'
 
 
+class Subcategory(db.Model):
+    __tablename__ = 'subcategories'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String())
+    category_id = db.Column(db.Integer())
+
+    def __init__(self, name, category_id):
+        self.name = name
+        self.category_id = category_id
+
+    def __repr__(self):
+        return self.name
+
+
 class MealsModel(db.Model):
     __tablename__ = 'meals'
 
@@ -85,20 +99,6 @@ class Category(db.Model):
         return self.name
 
 
-class Subategory(db.Model):
-    __tablename__ = 'subcategories'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String())
-    category_id = db.Column(db.Integer())
-
-    def __init__(self, name, category_id):
-        self.name = name
-        self.category_id = category_id
-
-    def __repr__(self):
-        return self.name
-
-
 @app.route('/list_db')
 def list_db():
     transactions = Transaction.query.all()
@@ -109,7 +109,7 @@ def list_db():
 def handle_meals():
     form = NewItemForm()
     categories = Category.query.all()
-    subcategories = Subategory.query.all()
+    subcategories = Subcategory.query.all()
     form.category.choices = categories
     form.subcategory.choices = subcategories
 
@@ -194,7 +194,7 @@ def delete_meal(meal_id):
 def home():
     form = FilterForm(request.args, meta={"csrf": False})
     categories = Category.query.all()
-    subcategories = Subategory.query.all()
+    subcategories = Subcategory.query.all()
     categories.insert(0, "---")
     form.category.choices = categories
     subcategories.insert(0, "---")
