@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, SelectField, DecimalField
 from wtforms.validators import InputRequired, DataRequired, Length
+from flask_sqlalchemy import SQLAlchemy
 
 class NewItemForm(FlaskForm):
     title = StringField("Title", validators=[InputRequired("Input is required!"),
