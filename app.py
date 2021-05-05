@@ -138,7 +138,7 @@ def handle_meal(meal_id):
     meal = MealsModel.query.get_or_404(meal_id)
     form = NewItemForm()
     categories = Category.query.all()
-    subcategories = Subategory.query.all()
+    subcategories = Subcategory.query.all()
     form.category.choices = categories
     form.subcategory.choices = subcategories
 
@@ -194,7 +194,7 @@ def delete_meal(meal_id):
 def home():
     form = FilterForm(request.args, meta={"csrf": False})
     categories = Category.query.all()
-    subcategories = Subcategory.query.all()
+    subcategories = Subcategory.query.all() #
     categories.insert(0, "---")
     form.category.choices = categories
     subcategories.insert(0, "---")
