@@ -9,6 +9,7 @@
 
         <form method="POST" action="{{ url_for('handle_meals') }}">
             {{ form.csrf_token() }}
+            {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.title.label }}
                 {{ form.title(class="form-control") }}
