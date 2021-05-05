@@ -10,7 +10,17 @@
         <form method="POST" action="{{ url_for('handle_meals') }}">
             {{ form.csrf_token() }}
             {{ form.hidden_tag() }}
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <script type="text/javascript">
+                 var csrf_token = "{{ csrf_token() }}";
+
+                    $.ajaxSetup({
+                     beforeSend: function(xhr, settings) {
+                     if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                  xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                     }
+                     }
+                 });
+            </script>
             <div class="form-group">
                 {{ form.title.label }}
                 {{ form.title(class="form-control") }}
