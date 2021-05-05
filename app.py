@@ -29,6 +29,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 )
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['DEFAULT_AUTHENTICATION_CLASSES'] = [
+    'rest_framework.authentication.BasicAuthentication'
+]
 
 
 db = SQLAlchemy(app)
@@ -106,7 +109,6 @@ def list_db():
 
 
 @app.route('/new_meal', methods=['POST', 'GET'])
-@csrf.exempt
 def handle_meals():
     form = NewItemForm()
     categories = Category.query.all()
