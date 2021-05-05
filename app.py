@@ -29,9 +29,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 )
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['DEFAULT_AUTHENTICATION_CLASSES'] = [
-    'rest_framework.authentication.BasicAuthentication'
-]
+app.config['SESSION_COOKIE_SECURE'] = False
 
 
 db = SQLAlchemy(app)
