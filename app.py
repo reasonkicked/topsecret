@@ -106,6 +106,7 @@ def list_db():
 
 
 @app.route('/new_meal', methods=['POST', 'GET'])
+@csrf.exempt
 def handle_meals():
     form = NewItemForm()
     categories = Category.query.all()
