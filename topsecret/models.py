@@ -3,6 +3,8 @@ from wtforms import StringField, TextAreaField, SubmitField, SelectField, Decima
 from wtforms.validators import InputRequired, DataRequired, Length
 from flask_sqlalchemy import SQLAlchemy
 
+
+
 class NewItemForm(FlaskForm):
     title = StringField("Title", validators=[InputRequired("Input is required!"),
                                              DataRequired("Data is required!"),

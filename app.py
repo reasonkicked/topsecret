@@ -30,7 +30,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_COOKIE_SECURE'] = False
-#app.config['SERVER_NAME'] = '192.168.65.100'
+app.config['SERVER_NAME'] = 'topsecret.pgssandbox.com'
 
 
 db = SQLAlchemy(app)
@@ -99,6 +99,7 @@ class Category(db.Model):
 
     def __repr__(self):
         return self.name
+
 
 
 @app.route('/list_db')
