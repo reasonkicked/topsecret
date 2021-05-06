@@ -20,6 +20,8 @@ csrf = CSRFProtect(app)
 csrf.init_app(app)
 
 
+
+
 db_config = get_secret()
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f'postgresql+psycopg2://{db_config["username"]}:' +
@@ -30,7 +32,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_COOKIE_SECURE'] = False
-app.config['SERVER_NAME'] = 'topsecret.pgssandbox.com'
+#app.config['SERVER_NAME'] = 'topsecret.pgssandbox.com'
+app.config['WTF_CSRF_CHECK_DEFAULT'] = False
+
 
 
 db = SQLAlchemy(app)
