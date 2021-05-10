@@ -24,9 +24,9 @@ csrf.init_app(app)
 # db_password = "CluLnxPaSS"
 # db_url = "tsrdsdb01.cveqos66v3sg.us-west-2.rds.amazonaws.com"
 # db_db = "tsrdsdb01"
-
-
-
+#
+#
+#
 # app.config['SQLALCHEMY_DATABASE_URI'] = (
 #     f'postgresql+psycopg2://{db_username}:' +
 #     f'{db_password}@' +
