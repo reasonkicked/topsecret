@@ -1,7 +1,0 @@
-project_name = "HA-wordpress"
-owner_tag = "tstanislawczyk"
-environment_tag = "Test"
-prefix = "test-01"
-media_s3_name = "s3-wp-media-ts"
-code_s3_name = "s3-wp-code-ts"
-region = "us-west-2"
