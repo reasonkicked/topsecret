@@ -55,8 +55,8 @@
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-2:890769921003:task-definition/ts-ecs-task-definition-1:1",
-  "family": "ts-ecs-task-definition-1",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-2:890769921003:task-definition/ts-ecs-task-definition-01:3",
+  "family": "ts-ecs-task-definition-01",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -89,7 +89,7 @@
   ],
   "networkMode": null,
   "cpu": null,
-  "revision": 1,
+  "revision": 3,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
