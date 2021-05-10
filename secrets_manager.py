@@ -9,7 +9,7 @@ import json
 
 
 def get_secret():
-    secret_name = "tsrdsdb01-cred"
+    secret_name = "tsrdsdb01-cred-1"
     region_name = "us-west-2"
 
     # Create a Secrets Manager client
